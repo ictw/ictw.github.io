@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+   <meta content="always" name="referrer">
+   <meta http-equiv="Cache-Control" content="no-transform">
+   <meta http-equiv="Cache-Control" content="no-siteapp">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>短网址在线生成_suofeiya</title>
+	<meta name="keywords" content="网址缩短,缩短网址,网址压缩,短链接,短域名,短网址,短网址生成,EPS短网址,新浪短网址">
+	<meta name="description" content="DWZ.GG为您提供短网址服务,短网址转换,EPS短网址,新浪短网址,短网址API接口,批量生成短链接,短网址生成,压缩所有网址包括图片、flash、mp3、rar等所有互联网地址，做最专业、最全面的网址缩短网站！">
+	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/clipboard.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="css/layer/layer.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">导航按钮</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a><img src="images/logo.jpg" alt="Gg短网址" class="logo" width="135px"></a>
+				</div>
+				<div id="navbar" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<!--自定义导航目录-->
+						<li><a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2440911975&amp;site=qq&amp;menu=yes" target="_blank">遇到问题？联系suofeiya～</a></li>
+						<br>
+					</ul>
+				</div>
+			</div>
+		</nav>
+</head>
+<body>
+		<div class="container clearfix">
+			<div class="panel panel-default">
+				<div class="panel-heading">短网址生成</div>
+				<div class="panel-body">
+					<textarea class="form-control" rows="10" placeholder="请填写网址&#10;批量生成一行一个&#10;一次性最多执行20条" id="dwz-control"></textarea>
+					<div class="form-group text-left col-xs-6 col-md-8">
+						<label class="radio-inline">
+							<input type="radio" name="ewmtype" id="eps_gs" value="eps_gs" checked> EPS
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="ewmtype" id="sina" value="sina"> t.cn
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="ewmtype" id="urlcn" value="urlcn"> urlcn
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="ewmtype" id="mrwso" value="mrwso"> mrwso
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="ewmtype" id="suoim" value="suoim"> suoim
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="ewmtype" id="of9cn" value="of9cn"> of9cn
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="ewmtype" id="980so" value="980so"> 980so
+						</label>
+						<label class="radio-inline">
+						<input type="radio" name="ewmtype" id="u6gg" value="u6gg"> u6gg
+						</label>
+						<label class="radio-inline">
+						<input type="radio" name="ewmtype" id="dwzmn" value="dwzmn"> dwzmn
+						</label>
+						<label class="radio-inline">
+							<input type="radio" name="ewmtype" id="eps_gs_un" value="eps_gs_un"> 短网址还原
+						</label>
+					</div>
+					<div class="form-group dwz-btn text-right  col-xs-6 col-md-4">
+						<button class="btn btn-success" type="button" id="btn_state">启动</button>
+						<button class="btn btn-info" type="button" id="btn_rest" onclick="rest()">重置</button>
+						<button class="btn btn-primary" type="button" id="btn_copy" data-clipboard-target=".dwzContent">复制</button>
+					</div>
+					<pre class="dwz-clear dwzContent"></pre>
+				</div>
+			</div>
+
+
+			<div class="panel panel-default">
+				<div class="panel-heading">短网址API接口文档</div>
+				<div class="panel-body">
+					<ol>
+						<li><a href="#make">短网址生成</a></li>
+						<li><a href="#un">短网址还原</a></li>
+						<li><a href="#more">网页小工具</a></li>
+					</ol>
+					<h3 id="make">生成短网址</h3>
+					<li>接口地址：https://apis.eps.gs/make.php</li>
+					<li>请求方式：GET</li>
+					<li>响应：（json）</li>
+					<pre><xmp>{"url_short":"","url_long":"","error":"0"}
+##url_short为生成后的短网址，url_long为原先的长网址</xmp></pre>
+					<li>提交参数：（GET提交）</li>
+					<li>url （为原先的长网址）</li>
+					<li>返回参数（json返回）：</li>
+					<li>url_short （生成后的短网址）</li>
+					<li>url_long （为原先的长网址）</li>
+					<li>error（正确返回0，如出错返回错误代码）</li>
+					<li>PS:当error为0时，表明生成成功，如返回其他字符，表示错误代码</li>
+					<h4>php生成示例：</h4>
+					<pre><xmp><?php $return=file_get_contents('https://apis.eps.gs/make.php?url=长网址');
+$result=json_decode($return); //转化为数组 
+echo $result->url_short; //显示短网址</xmp></pre>
+						<h3 id="un">还原短网址</h3>
+						<li>接口地址：https://apis.eps.gs/un.php</li>
+						<li>请求方式：GET</li>
+						<li>响应：（json） </li>
+						<pre><xmp>{"url_short":"","url_long":"","error":"0"}
+##url_short为还原前的短网址，url_long为还原后的长网址</xmp></pre>
+						<li>提交参数：（GET提交）</li>
+						<li>url （还原前的短网址）</li>
+						<li>返回参数（json返回）：</li>
+						<li>url_short （还原前的短网址）</li>
+						<li>url_long （还原后的长网址）</li>
+						<li>error（正确返回0，如出错返回错误代码）</li>
+						<li>PS:当error为0时，表明生成成功，如返回其他字符，表示错误代码</li>
+						<h4>php生成示例：</h4>
+						<pre><xmp><?php $return=file_get_contents('https://apis.eps.gs/un.php?url=短网址');
+$result=json_decode($return); //转化为数组 
+echo $result->url_long; //显示还原后的长网址</xmp></pre>
+							<h3 id="more">网站随意调用短网址生成功能：</h3>
+							<pre><xmp><iframe width="100%" height="250" frameborder="no" scrolling="no" src="https://apis.eps.gs/dwz.php"></iframe></xmp></pre>
+						</div>
+					</div>
+
+
+			</div></body>
+
+			<script type="text/javascript" src="https://apis.eps.gs/js/dwz_gg.js"></script>
+			<!--footer start-->
+			<footer class="footer text-center">
+				<div>
+					
+					<p class="text-center link"><a href="http://www.ictw.top" target="_blank">Back To suofeiya's blog</a></p>
+					Copyright © DWZ.GG  2019  
+				</div>
+			</footer>
+		
+		</html>

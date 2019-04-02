@@ -1,0 +1,35 @@
+/*主体底部边距*/
+.clearfix{min-height:550px;}
+#dwz-control{margin-bottom: 10px;}
+.dwz-btn button{margin-right: 5px;margin-bottom: 10px;}
+.dwz-clear{clear: right;}
+.dwzContent{display: none;}
+
+.checkbox-inline+.checkbox-inline, .radio-inline+.radio-inline{margin-left: 0px !important;}
+
+.Articleewm{
+	z-index: 999;
+    right: 20px;
+    top: 60px;
+  	text-align: center;
+  	color: #717375;
+  	display:block;
+  	position: fixed;
+  	background:#eee;
+
+}
+.Articleewm a{
+	font-size:10px;
+}
+.Articleewm img{  	
+  	width:136px;
+}
+
+#qrcode{  	
+  	width:136px;
+  	height:136px;
+}
+@media screen and (max-width: 780px){
+  .Articleewm{display:none;}
+	#Articleewm{display:none;}	
+}

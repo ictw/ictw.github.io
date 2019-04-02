@@ -1,0 +1,8 @@
+#
+# robots.txt for dwz.gg
+#
+
+User-agent: *
+Disallow: /*?*
+Disallow: /*.js$
+Disallow: /*.css$
