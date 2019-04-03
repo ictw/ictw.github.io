@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>suofeiya&#39;s blog</title>
   
-  
+  <subtitle>-Internet Change the World-</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-04-02T12:37:33.109Z</updated>
+  <updated>2019-04-03T11:16:04.213Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>Hello World——模板示例</title>
-    <link href="http://yoursite.com/2019/04/02/hello-world/"/>
-    <id>http://yoursite.com/2019/04/02/hello-world/</id>
-    <published>2019-04-02T12:37:33.109Z</published>
-    <updated>2019-04-02T12:37:33.109Z</updated>
+    <link href="http://yoursite.com/2019/04/03/hello-world/"/>
+    <id>http://yoursite.com/2019/04/03/hello-world/</id>
+    <published>2019-04-03T11:16:04.213Z</published>
+    <updated>2019-04-03T11:16:04.213Z</updated>
     
     <content type="html"><![CDATA[<p>这里填写简介信息（可以在主页面显示）</p><h1 id="这是一级标题"><a href="#这是一级标题" class="headerlink" title="这是一级标题"></a>这是一级标题</h1><h2 id="这里是二级标题"><a href="#这里是二级标题" class="headerlink" title="这里是二级标题"></a>这里是二级标题</h2><h3 id="这是三级标题"><a href="#这是三级标题" class="headerlink" title="这是三级标题"></a>这是三级标题</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">代码示例部分：</span><br><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>在此处可以插入超链接以及文字：<br>文本: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">链接文字</a></p><blockquote class="blockquote-center">引用部分样例1</blockquote><blockquote class="blockquote-center"><p>引用部分样例2</p></blockquote><blockquote class="blockquote-center"><p>引用部分样例3 </p></blockquote><h3 id="使用方式一："><a href="#使用方式一：" class="headerlink" title="使用方式一："></a>使用方式一：</h3><p><img src="/images/background.png" class="full-image" title="使用方式一"></p><h3 id="使用方式二："><a href="#使用方式二：" class="headerlink" title="使用方式二："></a>使用方式二：</h3><!-- 标签 方式，要求版本在0.4.5或以上 --><span itemprop="image" itemscope itemtype="http://schema.org/ImageObject"><img itemprop="url image" src="/images/background.png" class="full-image" alt="alt" title="使用方式二"><meta itemprop="width" content="auto"><meta itemprop="height" content="auto"></span><h3 id="使用方式三："><a href="#使用方式三：" class="headerlink" title="使用方式三："></a>使用方式三：</h3><!-- 别名 --><span itemprop="image" itemscope itemtype="http://schema.org/ImageObject"><img itemprop="url image" src="/images/background.png" class="full-image" alt="alt" title="使用方式三"><meta itemprop="width" content="auto"><meta itemprop="height" content="auto"></span><h2 id="几种不同的Bootstrap-Callout样式"><a href="#几种不同的Bootstrap-Callout样式" class="headerlink" title="几种不同的Bootstrap Callout样式"></a>几种不同的Bootstrap Callout样式</h2><div class="note default">            <p>default  </p>          </div><div class="note success">            <p>success  </p>          </div><div class="note primary">            <p>primary  </p>          </div><div class="note info">            <p>info  </p>          </div><div class="note warning">            <p>warning  </p>          </div><div class="note danger">            <p>danger  </p>          </div><h1 id="gt-gt-gt-本页由站长suofeiya整理-lt-lt-lt"><a href="#gt-gt-gt-本页由站长suofeiya整理-lt-lt-lt" class="headerlink" title="&gt;&gt;&gt;本页由站长suofeiya整理&lt;&lt;&lt;"></a>&gt;&gt;&gt;本页由站长suofeiya整理&lt;&lt;&lt;</h1><p>本页 MarkDown 下载地址：<a href="http://www.ictw.top/hello-suofeiya.md" target="_blank" rel="noopener">http://www.ictw.top/hello-suofeiya.md</a></p>]]></content>
     
@@ -35,6 +35,14 @@
     
     </summary>
     
+      <category term="suofeiya" scheme="http://yoursite.com/categories/suofeiya/"/>
+    
+      <category term="hello-world" scheme="http://yoursite.com/categories/suofeiya/hello-world/"/>
+    
+    
+      <category term="suofeiya" scheme="http://yoursite.com/tags/suofeiya/"/>
+    
+      <category term="hello-world" scheme="http://yoursite.com/tags/hello-world/"/>
     
   </entry>
   

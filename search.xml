@@ -2,8 +2,16 @@
 <search>
   <entry>
     <title><![CDATA[Hello World——模板示例]]></title>
-    <url>%2F2019%2F04%2F02%2Fhello-world%2F</url>
+    <url>%2F2019%2F04%2F03%2Fhello-world%2F</url>
     <content type="text"><![CDATA[这里填写简介信息（可以在主页面显示） 这是一级标题这里是二级标题这是三级标题12代码示例部分：$ hexo new "My New Post" 在此处可以插入超链接以及文字：文本: 链接文字 引用部分样例1 引用部分样例2 引用部分样例3 使用方式一： 使用方式二： 使用方式三： 几种不同的Bootstrap Callout样式 default success primary info warning danger &gt;&gt;&gt;本页由站长suofeiya整理&lt;&lt;&lt;本页 MarkDown 下载地址：http://www.ictw.top/hello-suofeiya.md]]></content>
+      <categories>
+        <category>suofeiya</category>
+        <category>hello-world</category>
+      </categories>
+      <tags>
+        <tag>suofeiya</tag>
+        <tag>hello-world</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[我的第一篇博文]]></title>
