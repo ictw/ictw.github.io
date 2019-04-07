@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[test]]></title>
+    <title><![CDATA[test001]]></title>
     <url>%2F2019%2F04%2F07%2Ftest%2F</url>
     <content type="text"><![CDATA[this is a TEST page]]></content>
   </entry>
@@ -23,8 +23,8 @@
         <category>原创</category>
       </categories>
       <tags>
-        <tag>原创</tag>
         <tag>suofeiya</tag>
+        <tag>原创</tag>
       </tags>
   </entry>
 </search>
