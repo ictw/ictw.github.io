@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[test001]]></title>
-    <url>%2F2019%2F04%2F07%2Ftest%2F</url>
-    <content type="text"><![CDATA[this is a TEST page]]></content>
-  </entry>
-  <entry>
     <title><![CDATA[关于博主]]></title>
     <url>%2F2019%2F04%2F06%2F%E5%85%B3%E4%BA%8E%E5%8D%9A%E4%B8%BB%2F</url>
     <content type="text"><![CDATA[关于博客 about_suofeiya’s blog 本博客基于Hexo v3.8.0 使用NexT.Gemini v7.0.1主题,借助Github平台开发的一个博客.由于博主平时无聊会搞一些乱七八糟的东西，所以本博客用于记录我的这些足迹.另外，我也会向大家分享一些有趣的事情，自己写一些技术性文章，欢迎大家与我交流. 最后，如果觉得本博客不错的话，可以点击下方打赏按钮打赏一下博主哟（哪怕是一分钱,哈哈）～]]></content>
