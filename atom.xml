@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-04-11T12:38:06.445Z</updated>
+  <updated>2019-04-12T02:10:50.285Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Microsoft Edge基于Chromium内核测试版正式发布</title>
+    <link href="http://yoursite.com/2019/04/12/Microsoft-Edge%E5%9F%BA%E4%BA%8EChromium%E5%86%85%E6%A0%B8%E6%B5%8B%E8%AF%95%E7%89%88%E6%AD%A3%E5%BC%8F%E5%8F%91%E5%B8%83/"/>
+    <id>http://yoursite.com/2019/04/12/Microsoft-Edge基于Chromium内核测试版正式发布/</id>
+    <published>2019-04-12T01:42:59.000Z</published>
+    <updated>2019-04-12T02:10:50.285Z</updated>
+    
+    <content type="html"><![CDATA[<div class="note danger">            <p>微软官宣Microsoft Edge基于Chromium内核测试版正式发布  </p>          </div>  <p><strong>围观地址：<a href="https://www.microsoftedgeinsider.com/en-us/" target="_blank" rel="noopener">https://www.microsoftedgeinsider.com/en-us/</a></strong></p><h2 id="下面我简单给大家介绍一下介绍一下"><a href="#下面我简单给大家介绍一下介绍一下" class="headerlink" title="下面我简单给大家介绍一下介绍一下"></a>下面我简单给大家介绍一下介绍一下</h2><h3 id="官网提供了三个版本供我们下载使用，分别是Beta-Channel（Updated-every-6-weeks），Dev-Channel（Updated-weekly），Canary-Channel（Updated-daily）-但是很遗憾暂时不支持linux操作系统，官方预计未来将会发布Windows8-8-1-7以及MacOS平台的insider，这里博主使用的是Windows10下的Dev-Channel版本。"><a href="#官网提供了三个版本供我们下载使用，分别是Beta-Channel（Updated-every-6-weeks），Dev-Channel（Updated-weekly），Canary-Channel（Updated-daily）-但是很遗憾暂时不支持linux操作系统，官方预计未来将会发布Windows8-8-1-7以及MacOS平台的insider，这里博主使用的是Windows10下的Dev-Channel版本。" class="headerlink" title="官网提供了三个版本供我们下载使用，分别是Beta Channel（Updated every 6 weeks），Dev Channel（Updated weekly），Canary Channel（Updated daily）,但是很遗憾暂时不支持linux操作系统，官方预计未来将会发布Windows8,8.1,7以及MacOS平台的insider，这里博主使用的是Windows10下的Dev Channel版本。"></a>官网提供了三个版本供我们下载使用，分别是Beta Channel（Updated every 6 weeks），Dev Channel（Updated weekly），Canary Channel（Updated daily）,但是很遗憾暂时不支持linux操作系统，官方预计未来将会发布Windows8,8.1,7以及MacOS平台的insider，这里博主使用的是Windows10下的Dev Channel版本。</h3><p><img src="/blog_images/2019-04-12_093903.png" class="full-image">  </p><h3 id="安装完成之后edge-insider会引导导入chrome浏览器里面的收藏夹，缓存等，然后映入眼帘的是这个主界面。"><a href="#安装完成之后edge-insider会引导导入chrome浏览器里面的收藏夹，缓存等，然后映入眼帘的是这个主界面。" class="headerlink" title="安装完成之后edge insider会引导导入chrome浏览器里面的收藏夹，缓存等，然后映入眼帘的是这个主界面。"></a>安装完成之后edge insider会引导导入chrome浏览器里面的收藏夹，缓存等，然后映入眼帘的是这个主界面。</h3><p><img src="/blog_images/2019-04-12_093743.png" class="full-image">  </p><h3 id="界面和主流浏览其基本没啥两样，也没什么特色，下面这张图关于浏览器的信息。"><a href="#界面和主流浏览其基本没啥两样，也没什么特色，下面这张图关于浏览器的信息。" class="headerlink" title="界面和主流浏览其基本没啥两样，也没什么特色，下面这张图关于浏览器的信息。"></a>界面和主流浏览其基本没啥两样，也没什么特色，下面这张图关于浏览器的信息。</h3><p><img src="/blog_images/2019-04-12_093424.png" class="full-image">  </p><h3 id="对于web前端开发人员，那肯定是少不了F12（默认为黑色主题，感觉科技感满满呢），截图如下："><a href="#对于web前端开发人员，那肯定是少不了F12（默认为黑色主题，感觉科技感满满呢），截图如下：" class="headerlink" title="对于web前端开发人员，那肯定是少不了F12（默认为黑色主题，感觉科技感满满呢），截图如下："></a>对于web前端开发人员，那肯定是少不了F12（默认为黑色主题，感觉科技感满满呢），截图如下：</h3><p><img src="/blog_images/2019-04-12_093702.png" class="full-image">  </p><h4 id="和chrome的开发人员工具基本没什么区别。"><a href="#和chrome的开发人员工具基本没什么区别。" class="headerlink" title="和chrome的开发人员工具基本没什么区别。"></a>和chrome的开发人员工具基本没什么区别。</h4><h3 id="最后，既然要想和chrome“抢饭碗“，那么肯定少不了插件啊"><a href="#最后，既然要想和chrome“抢饭碗“，那么肯定少不了插件啊" class="headerlink" title="最后，既然要想和chrome“抢饭碗“，那么肯定少不了插件啊"></a>最后，既然要想和chrome“抢饭碗“，那么肯定少不了插件啊</h3><p><img src="/blog_images/2019-04-12_093827.png" class="full-image"> </p><h4 id="插件很少，但未来如果发展起来的话我相信插件也会随之多起来。"><a href="#插件很少，但未来如果发展起来的话我相信插件也会随之多起来。" class="headerlink" title="插件很少，但未来如果发展起来的话我相信插件也会随之多起来。"></a>插件很少，但未来如果发展起来的话我相信插件也会随之多起来。</h4><h2 id="最后，如果正式版发布你会选择Edge-insider吗？欢迎大家留言评论～"><a href="#最后，如果正式版发布你会选择Edge-insider吗？欢迎大家留言评论～" class="headerlink" title="最后，如果正式版发布你会选择Edge insider吗？欢迎大家留言评论～"></a>最后，如果正式版发布你会选择Edge insider吗？欢迎大家留言评论～</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;div class=&quot;note danger&quot;&gt;
+            &lt;p&gt;微软官宣Microsoft Edge基于Chromium内核测试版正式发布  &lt;/p&gt;
+          &lt;/div&gt;  
+&lt;p&gt;&lt;strong&gt;围观地址：&lt;a href=&quot;https://www
+      
+    
+    </summary>
+    
+    
+      <category term="原创" scheme="http://yoursite.com/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+      <category term="科技资讯" scheme="http://yoursite.com/tags/%E7%A7%91%E6%8A%80%E8%B5%84%E8%AE%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>Python-Splash-API-Demo</title>

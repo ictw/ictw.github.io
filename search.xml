@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Microsoft Edge基于Chromium内核测试版正式发布]]></title>
+    <url>%2F2019%2F04%2F12%2FMicrosoft-Edge%E5%9F%BA%E4%BA%8EChromium%E5%86%85%E6%A0%B8%E6%B5%8B%E8%AF%95%E7%89%88%E6%AD%A3%E5%BC%8F%E5%8F%91%E5%B8%83%2F</url>
+    <content type="text"><![CDATA[微软官宣Microsoft Edge基于Chromium内核测试版正式发布 围观地址：https://www.microsoftedgeinsider.com/en-us/ 下面我简单给大家介绍一下介绍一下官网提供了三个版本供我们下载使用，分别是Beta Channel（Updated every 6 weeks），Dev Channel（Updated weekly），Canary Channel（Updated daily）,但是很遗憾暂时不支持linux操作系统，官方预计未来将会发布Windows8,8.1,7以及MacOS平台的insider，这里博主使用的是Windows10下的Dev Channel版本。 安装完成之后edge insider会引导导入chrome浏览器里面的收藏夹，缓存等，然后映入眼帘的是这个主界面。 界面和主流浏览其基本没啥两样，也没什么特色，下面这张图关于浏览器的信息。 对于web前端开发人员，那肯定是少不了F12（默认为黑色主题，感觉科技感满满呢），截图如下： 和chrome的开发人员工具基本没什么区别。最后，既然要想和chrome“抢饭碗“，那么肯定少不了插件啊 插件很少，但未来如果发展起来的话我相信插件也会随之多起来。最后，如果正式版发布你会选择Edge insider吗？欢迎大家留言评论～]]></content>
+      <tags>
+        <tag>原创</tag>
+        <tag>科技资讯</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Python-Splash-API-Demo]]></title>
     <url>%2F2019%2F04%2F11%2FPython-Splash-API-Demo%2F</url>
     <content type="text"><![CDATA[Python-Splash-API-Demo123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263import requestsfrom urllib.parse import quote# render.html的详细api参数在https://splash.readthedocs.io/en/stable/api.html#render.htmldef easyDemo(): # render接口基本用法 url = &apos;http://0.0.0.0:8050/render.html?url=https://www.baidu.com&apos; resp = requests.get(url) print(resp.text)def demo1(): # 获取页面截图，类似还有render.jpeg，外加参数有图片质量. url = &apos;http://0.0.0.0:8050/render.png?url=https://www.jd.com&amp;wait=3&amp;width=1000&amp;height=700&apos; resp = requests.get(url) with open(&apos;./Other/jingdong.png&apos;, &apos;wb&apos;) as f: f.write(resp.content) print(&quot;截图已保存&quot;)def demo2(): # 获取页面的HAR数据，类型为JSON # 直接在terminal中执行curl [url]同样的效果 url = &apos;http://0.0.0.0:8050/render.har?url=https://www.jd.com&amp;wait=3&apos; resp = requests.get(url) print(resp.json())def demo3(): url = &apos;http://0.0.0.0:8050/render.json?url=https://httpbin.org&apos; resp = requests.get(url) print(resp.text)def executeDemo(): # lua = &quot;&quot;&quot; # function main(splash) # return &apos;suofeiya&apos; # end # &quot;&quot;&quot; # print(quote(lua)) # url = &apos;http://0.0.0.0:8050/execute?lua_source=&apos; + quote(lua) # resp = requests.get(url) # print(resp.text) lua = &quot;&quot;&quot; function main(splash,args) local treat = require(&apos;treat&apos;) local resp=splash:http_get(&apos;http://httpbin.org/get&apos;) return&#123; html = treat.as_string(resp.body), url = resp.url, status = resp.status &#125; end &quot;&quot;&quot; # 注意此处splash API 中的execute的写法 url = &apos;http://0.0.0.0:8050/execute?lua_source=&apos; + quote(lua) resp = requests.get(url) print(resp.text)if __name__ == &apos;__main__&apos;: executeDemo()]]></content>
