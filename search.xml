@@ -1,44 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Python爬虫练习-淘宝-002]]></title>
-    <url>%2F2019%2F04%2F16%2FPython%E7%88%AC%E8%99%AB%E7%BB%83%E4%B9%A0-%E6%B7%98%E5%AE%9D-002%2F</url>
-    <content type="text"><![CDATA[Python爬虫练习-淘宝-002taobao_config.py12345678MONGO_URL = 'localhost'MONGO_DB = 'taobao'MONGO_COLLECTION = 'taobao_spider'KEYWORD = 'ipad'MAX_PAGE = 10SERVICE_ARGS = ['--load-images=false', '--disk-cache=true'] taobao_spider.py12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091import pymongofrom selenium import webdriverfrom selenium.common.exceptions import TimeoutExceptionfrom selenium.webdriver.common.by import Byfrom selenium.webdriver.support import expected_conditions as ECfrom selenium.webdriver.support.wait import WebDriverWaitfrom pyquery import PyQuery as pqfrom urllib.parse import quotefrom Linux_python.Python3_spider.taobao_config import *browser = webdriver.Chrome(executable_path=r'/home/suofeiya/pycharm-2019.1.1/bin/chromedriver')wait = WebDriverWait(browser, 10)client = pymongo.MongoClient(MONGO_URL)db = client[MONGO_DB]def login(): login_url = "https://login.taobao.com/member/login.jhtml" browser.get(login_url) print('Scan the QRcode or input your login information to login(IN 60s)') try: WebDriverWait(browser, 60).until( EC.url_changes ) browser.implicitly_wait(2) except TimeoutException: print("Time out!")def get_index(page): print("Spidering page " + str(page)) try: url = "https://s.taobao.com/search?q=" + quote(KEYWORD) browser.get(url) if page &gt; 1: input = wait.until( EC.presence_of_element_located((By.CSS_SELECTOR, '#mainsrp-pager div.form &gt; input')) ) submit = wait.until( EC.element_to_be_clickable((By.CSS_SELECTOR, '#mainsrp-pager div.form &gt; span.btn.J_Submit')) ) input.clear() input.send_keys(page) submit.click() wait.until( EC.text_to_be_present_in_element((By.CSS_SELECTOR, '#mainsrp-pager li.item.active &gt; span'), str(page)) ) wait.until( EC.presence_of_element_located((By.CSS_SELECTOR, '.m-itemlist .items .item')) ) get_infos() except TimeoutException: get_index(page)def get_infos(): html = browser.page_source doc = pq(html) items = doc('#mainsrp-itemlist .items .item J_MouserOnverReq ').items() for item in items: product = &#123; 'image': item.find('.pic .img').attr('data-src'), 'price': item.find('.price').text(), 'deal': item.find('.deal-cnt').text(), 'title': item.find('.title').text(), 'shop': item.find('.shop').text(), 'location': item.find('.location').text() &#125; print(product) save2Mongo(product)def save2Mongo(result): try: if db[MONGO_COLLECTION].insert(result): print('save to mongoDB successfully') except Exception: print('save to mongoDB ERROR')def main(): login() for x in range(1, MAX_PAGE + 1): get_index(x) browser.close()if __name__ == '__main__': main()]]></content>
+    <title><![CDATA[geetesst滑动验证码]]></title>
+    <url>%2F2019%2F05%2F06%2Fgeetesst%E6%BB%91%E5%8A%A8%E9%AA%8C%E8%AF%81%E7%A0%81%2F</url>
+    <content type="text"><![CDATA[geetesst滑动验证码`python --coding:utf-8--import timefrom io import BytesIOfrom PIL import Imagefrom selenium import webdriverfrom selenium.webdriver import ActionChainsfrom selenium.webdriver.common.by import Byfrom selenium.webdriver.support.wait import WebDriverWaitfrom selenium.webdriver.support import expected_conditions as EC LOGIN_EMAIL = &#39;ictw@qq.com‘LOGIN_PASSWD = ‘yourpassword’BORDER = 6INIT_LEFT = 60 极验拖动验证码识别class CrackGeetest(): def init(self): # 初始化url，driver，email，passwd. self.url = &apos;https://auth.geetest.com/login/&apos; self.driver = webdriver.Chrome(executable_path=r&apos;/home/suofeiya/pycharm-2019.1.1/bin/chromedriver&apos;) self.email = LOGIN_EMAIL self.passwd = LOGIN_PASSWD self.wait = WebDriverWait(self.driver, 20) def get_geetestBtn(self): &quot;&quot;&quot; # 获取验证码开启按钮位置 :return: 验证码按钮对象 &quot;&quot;&quot; geetestBtn = self.wait.until(EC.element_to_be_clickable((By.CLASS_NAME, &apos;geetest_radar_tip&apos;))) return geetestBtn def get_screenshot(self): &quot;&quot;&quot; 获取屏幕截图 :return: 屏幕截图对象 &quot;&quot;&quot; screenshot = self.driver.get_screenshot_as_png() screenshot = Image.open(BytesIO(screenshot)) return screenshot def get_position(self): &quot;&quot;&quot; 获取验证码位置 :return: 验证码位置元组 &quot;&quot;&quot; img = self.wait.until( EC.presence_of_element_located((By.CLASS_NAME, &apos;geetest_item_img&apos;)) ) time.sleep(2) location = img.location size = img.size top, bottom, left, right = location[&apos;y&apos;], location[&apos;y&apos;] + size[&apos;height&apos;], location[&apos;x&apos;], location[&apos;x&apos;] + size[ &apos;width&apos;] return (top, bottom, left, right) def get_geetest_image(self, name=&apos;captcha.png&apos;): &quot;&quot;&quot; 获取验证码图片 :return: 图片对象 &quot;&quot;&quot; top, bottom, left, right = self.get_position() print(&quot;验证码位置：&quot;, top, bottom, left, right) screenshot = self.get_screenshot() captcha = screenshot.crop((left, top, right, bottom)) captcha.save(name) return captcha def input_infos(self): self.driver.get(self.url) self.driver.implicitly_wait(2) self.driver.find_element_by_xpath( &apos;//*[@id=&quot;base&quot;]/div[2]/div/div/div[3]/div/form/div[1]/div/div[1]/div/input&apos;).send_keys(self.email) self.driver.find_element_by_xpath( &apos;//*[@id=&quot;base&quot;]/div[2]/div/div/div[3]/div/form/div[2]/div/div[1]/div/input&apos;).send_keys(self.passwd) def get_slider(self): &quot;&quot;&quot; 获取滑块对象 :return: 滑块对象 &quot;&quot;&quot; slider = self.wait.until( EC.element_to_be_clickable((By.CLASS_NAME, &apos;geetest_slider_button&apos;)) ) return slider def is_pixel_equal(self, image1, image2, x, y): &quot;&quot;&quot; 判断相同位置的像素是否相同 :param image1: 图片1 :param image2: 图片1 :param x: 位置x :param y: 位置y :return: boolean像素是否相同 &quot;&quot;&quot; pixel1 = image1.load()[x, y] pixel2 = image2.load()[x, y] threshold = 60 if abs(pixel1[0] - pixel2[0]) &lt; threshold and abs(pixel1[1] - pixel2[1]) &lt; threshold and abs( pixel1[2] - pixel2[2]) &lt; threshold: return True else: return False def get_gap(self, image1, image2): &quot;&quot;&quot; 获取缺口偏移量 :param image1: 原始图片（无缺口） :param image2: 带有缺口的图片 :return: 偏移量 &quot;&quot;&quot; left = 60 for i in range(left, image1.size[0]): for j in range(image1.size[1]): left = i return left return left def get_track(self, distance): &quot;&quot;&quot; 根据偏移量获取移动轨迹 :param distance: 偏移量 :return: 移动轨迹 &quot;&quot;&quot; track = [] current = 0 mid = distance * 4 / 5 t = 0.2 v = 0 while current &lt; distance: if current &lt; mid: a = 2 else: a = -3 v0 = v v = v0 + a * t move = v0 * t + 1 / 2 * a * t * t current += move track.append(round(move)) return track def move_to_gap(self, slider, tracks): &quot;&quot;&quot; 拖动滑块到缺口处 :param slider:滑块对象 :param tracks: 轨迹 &quot;&quot;&quot; # 行为链 ActionChains(self.driver).click_and_hold(slider).perform() for x in tracks: ActionChains(self.driver).move_by_offset(xoffset=x, yoffset=0).perform() time.sleep(0.5) ActionChains(self.driver).release().perform() def login(self): &quot;&quot;&quot; 登录geetest :return: &quot;&quot;&quot; submit = self.wait.until( EC.element_to_be_clickable((By.CLASS_NAME, &apos;geetest-btn&apos;)) ) submit.click() time.sleep(10) print(&quot;登录成功&quot;) def crack(self): self.input_infos() button = self.get_geetestBtn() button.click() image1 = self.get_geetest_image(&apos;captcha1.png&apos;) slider = self.get_slider() slider.click() image2 = self.get_geetest_image(&apos;captcha2.png&apos;) gap = self.get_gap(image1, image2) print(&apos;缺口位置：&apos;, gap) gap -= BORDER track = self.get_track(gap) print(&apos;滑动轨迹：&apos;, track) self.move_to_gap(slider, track) success = self.wait.ubtil( EC.text_to_be_present_in_element((By.CLASS_NAME, &apos;geetest_success_radar_tip_content&apos;), &apos;验证成功&apos;) ) print(success) if not success: self.crack() else: self.login() if name == ‘main‘: geetest = CrackGeetest() # geetest.input_infos() geetest.crack()]]></content>
       <tags>
         <tag>原创</tag>
         <tag>Python_spider</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Microsoft Edge基于Chromium内核测试版正式发布]]></title>
-    <url>%2F2019%2F04%2F12%2FMicrosoft-Edge%E5%9F%BA%E4%BA%8EChromium%E5%86%85%E6%A0%B8%E6%B5%8B%E8%AF%95%E7%89%88%E6%AD%A3%E5%BC%8F%E5%8F%91%E5%B8%83%2F</url>
-    <content type="text"><![CDATA[微软官宣Microsoft Edge基于Chromium内核测试版正式发布 围观地址：https://www.microsoftedgeinsider.com/en-us/ 下面我简单给大家介绍一下介绍一下官网提供了三个版本供我们下载使用，分别是Beta Channel（Updated every 6 weeks），Dev Channel（Updated weekly），Canary Channel（Updated daily）,但是很遗憾暂时不支持linux操作系统，官方预计未来将会发布Windows8,8.1,7以及MacOS平台的insider，这里博主使用的是Windows10下的Dev Channel版本。 安装完成之后edge insider会引导导入chrome浏览器里面的收藏夹，缓存等，然后映入眼帘的是这个主界面。 界面和主流浏览其基本没啥两样，也没什么特色，下面这张图关于浏览器的信息。 对于web前端开发人员，那肯定是少不了F12（默认为黑色主题，感觉科技感满满呢），截图如下： 和chrome的开发人员工具基本没什么区别。最后，既然要想和chrome“抢饭碗“，那么肯定少不了插件啊 插件很少，但未来如果发展起来的话我相信插件也会随之多起来。最后，如果正式版发布你会选择Edge insider吗？欢迎大家留言评论～]]></content>
+    <title><![CDATA[nexT主题内部标签]]></title>
+    <url>%2F2019%2F05%2F05%2FnexT%E4%B8%BB%E9%A2%98%E5%86%85%E9%83%A8%E6%A0%87%E7%AD%BE%2F</url>
+    <content type="text"><![CDATA[这里填写简介信息（可以在主页面显示） 这是一级标题这里是二级标题这是三级标题12代码示例部分：$ hexo new "My New Post" 在此处可以插入超链接以及文字：文本: 链接文字 引用部分样例1 引用部分样例2 引用部分样例3 使用方式一： 使用方式二： 使用方式三： 几种不同的Bootstrap Callout样式 default success primary info warning danger &gt;&gt;&gt;本页由站长suofeiya整理&lt;&lt;&lt;本页 MarkDown 下载地址：http://www.ictw.top/hello-suofeiya.md]]></content>
+      <categories>
+        <category>suofeiya</category>
+        <category>原创</category>
+      </categories>
       <tags>
-        <tag>原创</tag>
-        <tag>科技资讯</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Python-Splash-API-Demo]]></title>
-    <url>%2F2019%2F04%2F11%2FPython-Splash-API-Demo%2F</url>
-    <content type="text"><![CDATA[Python-Splash-API-Demo123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263import requestsfrom urllib.parse import quote# render.html的详细api参数在https://splash.readthedocs.io/en/stable/api.html#render.htmldef easyDemo(): # render接口基本用法 url = 'http://0.0.0.0:8050/render.html?url=https://www.baidu.com' resp = requests.get(url) print(resp.text)def demo1(): # 获取页面截图，类似还有render.jpeg，外加参数有图片质量. url = 'http://0.0.0.0:8050/render.png?url=https://www.jd.com&amp;wait=3&amp;width=1000&amp;height=700' resp = requests.get(url) with open('./Other/jingdong.png', 'wb') as f: f.write(resp.content) print("截图已保存")def demo2(): # 获取页面的HAR数据，类型为JSON # 直接在terminal中执行curl [url]同样的效果 url = 'http://0.0.0.0:8050/render.har?url=https://www.jd.com&amp;wait=3' resp = requests.get(url) print(resp.json())def demo3(): url = 'http://0.0.0.0:8050/render.json?url=https://httpbin.org' resp = requests.get(url) print(resp.text)def executeDemo(): # lua = """ # function main(splash) # return 'suofeiya' # end # """ # print(quote(lua)) # url = 'http://0.0.0.0:8050/execute?lua_source=' + quote(lua) # resp = requests.get(url) # print(resp.text) lua = """ function main(splash,args) local treat = require('treat') local resp=splash:http_get('http://httpbin.org/get') return&#123; html = treat.as_string(resp.body), url = resp.url, status = resp.status &#125; end """ # 注意此处splash API 中的execute的写法 url = 'http://0.0.0.0:8050/execute?lua_source=' + quote(lua) resp = requests.get(url) print(resp.text)if __name__ == '__main__': executeDemo()]]></content>
-      <tags>
-        <tag>原创</tag>
-        <tag>Python_spider</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[零成本撸30G海外流量-用于FQ]]></title>
-    <url>%2F2019%2F04%2F08%2F%E9%9B%B6%E6%88%90%E6%9C%AC%E6%92%B830G%E6%B5%B7%E5%A4%96%E6%B5%81%E9%87%8F-%E7%94%A8%E4%BA%8EFQ%2F</url>
-    <content type="text"><![CDATA[零成本撸30G海外流量(用于FQ) 1.第一步获取Windscribe优惠码（重要）不获取好像只有只有2G流量。打开 Windscribe VPN注册页面 (不需要FQ即可打开)找到下面这个按钮并单击。 然后跳转到这个页面，填完信息即可，邮箱一定要填写真实的邮箱，不然到时候收不到验证，其他随意填写。 注册完后得到一个激活码，复制他（很关键）然后点击下载就行了 2.注册windscribe账号，与第一步不同。链接为：https://windscribe.com/?friend=s034w6qh （这一步好像需要FQ才能打开）同样需要真实的邮箱地址，注册完后进入个人信息栏找到最下面第二个按钮提示输入激活码，填入第一步的激活码即可拥有30GB海外流量，就是这么简单. 3.windscribe优点多线路支持 全平台支持 附一张效果图 速度还是蛮快的呢，嘿嘿。 最后，如果觉得本博文写的还不错欢迎大家分享转发（须标明来源）关注本博客，我会分享更多福利给大家～有问题可以与博主联系或者在评论区留言，看到必回～也可以打赏本博主哟～]]></content>
-      <tags>
-        <tag>原创</tag>
         <tag>suofeiya</tag>
+        <tag>原创</tag>
       </tags>
   </entry>
   <entry>
     <title><![CDATA[关于博主]]></title>
-    <url>%2F2019%2F04%2F08%2F%E5%85%B3%E4%BA%8E%E5%8D%9A%E4%B8%BB%2F</url>
+    <url>%2F2019%2F05%2F05%2F%E5%85%B3%E4%BA%8E%E5%8D%9A%E4%B8%BB%2F</url>
     <content type="text"><![CDATA[关于博客 about_suofeiya’s blog 本博客基于Hexo v3.8.0 使用NexT.Gemini v7.0.1主题,借助Github平台开发的一个博客.由于博主平时无聊会搞一些乱七八糟的东西，所以本博客用于记录我的这些足迹.另外，我也会向大家分享一些有趣的事情，自己写一些技术性文章，欢迎大家与我交流. 最后，如果觉得本博客不错的话，可以点击下方打赏按钮打赏一下博主哟（哪怕是一分钱,哈哈）～]]></content>
       <tags>
         <tag>原创</tag>
@@ -55,16 +41,8 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[nexT主题内部标签]]></title>
-    <url>%2F2019%2F04%2F06%2FnexT%E4%B8%BB%E9%A2%98%E5%86%85%E9%83%A8%E6%A0%87%E7%AD%BE%2F</url>
-    <content type="text"><![CDATA[这里填写简介信息（可以在主页面显示） 这是一级标题这里是二级标题这是三级标题12代码示例部分：$ hexo new "My New Post" 在此处可以插入超链接以及文字：文本: 链接文字 引用部分样例1 引用部分样例2 引用部分样例3 使用方式一： 使用方式二： 使用方式三： 几种不同的Bootstrap Callout样式 default success primary info warning danger &gt;&gt;&gt;本页由站长suofeiya整理&lt;&lt;&lt;本页 MarkDown 下载地址：http://www.ictw.top/hello-suofeiya.md]]></content>
-      <categories>
-        <category>suofeiya</category>
-        <category>原创</category>
-      </categories>
-      <tags>
-        <tag>原创</tag>
-        <tag>suofeiya</tag>
-      </tags>
+    <title><![CDATA[零成本撸30G海外流量_用于FQ]]></title>
+    <url>%2F2019%2F04%2F08%2F%E9%9B%B6%E6%88%90%E6%9C%AC%E6%92%B830G%E6%B5%B7%E5%A4%96%E6%B5%81%E9%87%8F-%E7%94%A8%E4%BA%8EFQ%2F</url>
+    <content type="text"><![CDATA[零成本撸30G海外流量(用于FQ) 1.第一步获取Windscribe优惠码（重要）不获取好像只有只有2G流量。打开 Windscribe VPN注册页面 (不需要FQ即可打开)找到下面这个按钮并单击。 然后跳转到这个页面，填完信息即可，邮箱一定要填写真实的邮箱，不然到时候收不到验证，其他随意填写。 注册完后得到一个激活码，复制他（很关键）然后点击下载就行了 2.注册windscribe账号，与第一步不同。链接为：https://windscribe.com/?friend=s034w6qh （这一步好像需要FQ才能打开）同样需要真实的邮箱地址，注册完后进入个人信息栏找到最下面第二个按钮提示输入激活码，填入第一步的激活码即可拥有30GB海外流量，就是这么简单. 3.windscribe优点多线路支持 全平台支持 附一张效果图 速度还是蛮快的呢，嘿嘿。 最后，如果觉得本博文写的还不错欢迎大家分享转发（须标明来源）关注本博客，我会分享更多福利给大家～有问题可以与博主联系或者在评论区留言，看到必回～也可以打赏本博主哟～]]></content>
   </entry>
 </search>
