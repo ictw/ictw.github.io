@@ -117,18 +117,18 @@
 
 
 
-  <meta name="description" content="geetesst滑动验证码`python --coding:utf-8--import timefrom io import BytesIOfrom PIL import Imagefrom selenium import webdriverfrom selenium.webdriver import ActionChainsfrom selenium.webdriver.common.by im">
+  <meta name="description" content="geetesst滑动验证码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798">
 <meta name="keywords" content="原创,Python_spider">
 <meta property="og:type" content="article">
 <meta property="og:title" content="geetesst滑动验证码">
 <meta property="og:url" content="http://yoursite.com/2019/05/06/geetesst滑动验证码/index.html">
 <meta property="og:site_name" content="suofeiya&#39;s blog">
-<meta property="og:description" content="geetesst滑动验证码`python --coding:utf-8--import timefrom io import BytesIOfrom PIL import Imagefrom selenium import webdriverfrom selenium.webdriver import ActionChainsfrom selenium.webdriver.common.by im">
+<meta property="og:description" content="geetesst滑动验证码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-06T12:18:14.266Z">
+<meta property="og:updated_time" content="2019-05-06T12:28:12.690Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="geetesst滑动验证码">
-<meta name="twitter:description" content="geetesst滑动验证码`python --coding:utf-8--import timefrom io import BytesIOfrom PIL import Imagefrom selenium import webdriverfrom selenium.webdriver import ActionChainsfrom selenium.webdriver.common.by im">
+<meta name="twitter:description" content="geetesst滑动验证码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798">
 
 
 
@@ -516,7 +516,7 @@
                 
               
 
-              <time title="创建时间：2019-05-06 20:15:44 / 修改时间：20:18:14" itemprop="dateCreated datePublished" datetime="2019-05-06T20:15:44+08:00">2019-05-06</time>
+              <time title="创建时间：2019-05-06 20:15:44 / 修改时间：20:28:12" itemprop="dateCreated datePublished" datetime="2019-05-06T20:15:44+08:00">2019-05-06</time>
             
 
             
@@ -579,189 +579,7 @@
       
 
       
-        <h1 id="geetesst滑动验证码"><a href="#geetesst滑动验证码" class="headerlink" title="geetesst滑动验证码"></a>geetesst滑动验证码</h1><p><code>`</code>python</p>
-<h1 id="coding-utf-8"><a href="#coding-utf-8" class="headerlink" title="--coding:utf-8--"></a>-<em>-coding:utf-8-</em>-</h1><p>import time<br>from io import BytesIO<br>from PIL import Image<br>from selenium import webdriver<br>from selenium.webdriver import ActionChains<br>from selenium.webdriver.common.by import By<br>from selenium.webdriver.support.wait import WebDriverWait<br>from selenium.webdriver.support import expected_conditions as EC</p>
-<p>LOGIN_EMAIL = <a href="mailto:&#39;ictw@qq.com" target="_blank" rel="noopener">&#39;ictw@qq.com</a>‘<br>LOGIN_PASSWD = ‘yourpassword’<br>BORDER = 6<br>INIT_LEFT = 60</p>
-<h1 id="极验拖动验证码识别"><a href="#极验拖动验证码识别" class="headerlink" title="极验拖动验证码识别"></a>极验拖动验证码识别</h1><p>class CrackGeetest():<br>    def <strong>init</strong>(self):</p>
-<pre><code>    # 初始化url，driver，email，passwd.
-    self.url = &apos;https://auth.geetest.com/login/&apos;
-    self.driver = webdriver.Chrome(executable_path=r&apos;/home/suofeiya/pycharm-2019.1.1/bin/chromedriver&apos;)
-    self.email = LOGIN_EMAIL
-    self.passwd = LOGIN_PASSWD
-    self.wait = WebDriverWait(self.driver, 20)
-
-def get_geetestBtn(self):
-    &quot;&quot;&quot;
-    # 获取验证码开启按钮位置
-    :return: 验证码按钮对象
-    &quot;&quot;&quot;
-    geetestBtn = self.wait.until(EC.element_to_be_clickable((By.CLASS_NAME, &apos;geetest_radar_tip&apos;)))
-    return geetestBtn
-
-def get_screenshot(self):
-    &quot;&quot;&quot;
-    获取屏幕截图
-    :return: 屏幕截图对象
-    &quot;&quot;&quot;
-    screenshot = self.driver.get_screenshot_as_png()
-    screenshot = Image.open(BytesIO(screenshot))
-    return screenshot
-
-def get_position(self):
-    &quot;&quot;&quot;
-    获取验证码位置
-    :return: 验证码位置元组
-    &quot;&quot;&quot;
-    img = self.wait.until(
-        EC.presence_of_element_located((By.CLASS_NAME, &apos;geetest_item_img&apos;))
-    )
-    time.sleep(2)
-    location = img.location
-    size = img.size
-    top, bottom, left, right = location[&apos;y&apos;], location[&apos;y&apos;] + size[&apos;height&apos;], location[&apos;x&apos;], location[&apos;x&apos;] + size[
-        &apos;width&apos;]
-    return (top, bottom, left, right)
-
-def get_geetest_image(self, name=&apos;captcha.png&apos;):
-    &quot;&quot;&quot;
-    获取验证码图片
-    :return: 图片对象
-    &quot;&quot;&quot;
-    top, bottom, left, right = self.get_position()
-    print(&quot;验证码位置：&quot;, top, bottom, left, right)
-    screenshot = self.get_screenshot()
-    captcha = screenshot.crop((left, top, right, bottom))
-    captcha.save(name)
-    return captcha
-
-def input_infos(self):
-    self.driver.get(self.url)
-    self.driver.implicitly_wait(2)
-    self.driver.find_element_by_xpath(
-        &apos;//*[@id=&quot;base&quot;]/div[2]/div/div/div[3]/div/form/div[1]/div/div[1]/div/input&apos;).send_keys(self.email)
-    self.driver.find_element_by_xpath(
-        &apos;//*[@id=&quot;base&quot;]/div[2]/div/div/div[3]/div/form/div[2]/div/div[1]/div/input&apos;).send_keys(self.passwd)
-
-def get_slider(self):
-    &quot;&quot;&quot;
-    获取滑块对象
-    :return: 滑块对象
-    &quot;&quot;&quot;
-    slider = self.wait.until(
-        EC.element_to_be_clickable((By.CLASS_NAME, &apos;geetest_slider_button&apos;))
-    )
-    return slider
-
-def is_pixel_equal(self, image1, image2, x, y):
-    &quot;&quot;&quot;
-    判断相同位置的像素是否相同
-    :param image1: 图片1
-    :param image2: 图片1
-    :param x: 位置x
-    :param y: 位置y
-    :return: boolean像素是否相同
-    &quot;&quot;&quot;
-    pixel1 = image1.load()[x, y]
-    pixel2 = image2.load()[x, y]
-    threshold = 60
-    if abs(pixel1[0] - pixel2[0]) &lt; threshold and abs(pixel1[1] - pixel2[1]) &lt; threshold and abs(
-            pixel1[2] - pixel2[2]) &lt; threshold:
-        return True
-    else:
-        return False
-
-def get_gap(self, image1, image2):
-    &quot;&quot;&quot;
-    获取缺口偏移量
-    :param image1: 原始图片（无缺口）
-    :param image2: 带有缺口的图片
-    :return: 偏移量
-    &quot;&quot;&quot;
-    left = 60
-    for i in range(left, image1.size[0]):
-        for j in range(image1.size[1]):
-            left = i
-            return left
-
-    return left
-
-def get_track(self, distance):
-    &quot;&quot;&quot;
-    根据偏移量获取移动轨迹
-    :param distance: 偏移量
-    :return: 移动轨迹
-    &quot;&quot;&quot;
-    track = []
-    current = 0
-    mid = distance * 4 / 5
-    t = 0.2
-    v = 0
-    while current &lt; distance:
-        if current &lt; mid:
-            a = 2
-        else:
-            a = -3
-
-        v0 = v
-        v = v0 + a * t
-        move = v0 * t + 1 / 2 * a * t * t
-        current += move
-        track.append(round(move))
-    return track
-
-def move_to_gap(self, slider, tracks):
-    &quot;&quot;&quot;
-    拖动滑块到缺口处
-    :param slider:滑块对象
-    :param tracks:  轨迹
-    &quot;&quot;&quot;
-    # 行为链
-    ActionChains(self.driver).click_and_hold(slider).perform()
-    for x in tracks:
-        ActionChains(self.driver).move_by_offset(xoffset=x, yoffset=0).perform()
-    time.sleep(0.5)
-    ActionChains(self.driver).release().perform()
-
-def login(self):
-    &quot;&quot;&quot;
-    登录geetest
-    :return:
-    &quot;&quot;&quot;
-    submit = self.wait.until(
-        EC.element_to_be_clickable((By.CLASS_NAME, &apos;geetest-btn&apos;))
-    )
-    submit.click()
-    time.sleep(10)
-    print(&quot;登录成功&quot;)
-
-def crack(self):
-    self.input_infos()
-    button = self.get_geetestBtn()
-    button.click()
-    image1 = self.get_geetest_image(&apos;captcha1.png&apos;)
-    slider = self.get_slider()
-    slider.click()
-    image2 = self.get_geetest_image(&apos;captcha2.png&apos;)
-    gap = self.get_gap(image1, image2)
-    print(&apos;缺口位置：&apos;, gap)
-    gap -= BORDER
-    track = self.get_track(gap)
-    print(&apos;滑动轨迹：&apos;, track)
-    self.move_to_gap(slider, track)
-
-    success = self.wait.ubtil(
-        EC.text_to_be_present_in_element((By.CLASS_NAME, &apos;geetest_success_radar_tip_content&apos;), &apos;验证成功&apos;)
-    )
-    print(success)
-
-    if not success:
-        self.crack()
-    else:
-        self.login()
-</code></pre><p>if <strong>name</strong> == ‘<strong>main</strong>‘:<br>    geetest = CrackGeetest()</p>
-<pre><code># geetest.input_infos()
-geetest.crack()
-</code></pre>
+        <h1 id="geetesst滑动验证码"><a href="#geetesst滑动验证码" class="headerlink" title="geetesst滑动验证码"></a>geetesst滑动验证码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> io <span class="keyword">import</span> BytesIO</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver <span class="keyword">import</span> ActionChains</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.by <span class="keyword">import</span> By</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.support.wait <span class="keyword">import</span> WebDriverWait</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.support <span class="keyword">import</span> expected_conditions <span class="keyword">as</span> EC</span><br><span class="line"></span><br><span class="line">LOGIN_EMAIL = <span class="string">'ictw@qq.com'</span></span><br><span class="line">LOGIN_PASSWD = <span class="string">'yourpassword'</span></span><br><span class="line">BORDER = <span class="number">6</span></span><br><span class="line">INIT_LEFT = <span class="number">60</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CrackGeetest</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># 初始化url，driver，email，passwd.</span></span><br><span class="line">        self.url = <span class="string">'https://auth.geetest.com/login/'</span></span><br><span class="line">        self.driver = webdriver.Chrome(executable_path=<span class="string">r'/home/suofeiya/pycharm-2019.1.1/bin/chromedriver'</span>)</span><br><span class="line">        self.email = LOGIN_EMAIL</span><br><span class="line">        self.passwd = LOGIN_PASSWD</span><br><span class="line">        self.wait = WebDriverWait(self.driver, <span class="number">20</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_geetestBtn</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        # 获取验证码开启按钮位置</span></span><br><span class="line"><span class="string">        :return: 验证码按钮对象</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        geetestBtn = self.wait.until(EC.element_to_be_clickable((By.CLASS_NAME, <span class="string">'geetest_radar_tip'</span>)))</span><br><span class="line">        <span class="keyword">return</span> geetestBtn</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_screenshot</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        获取屏幕截图</span></span><br><span class="line"><span class="string">        :return: 屏幕截图对象</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        screenshot = self.driver.get_screenshot_as_png()</span><br><span class="line">        screenshot = Image.open(BytesIO(screenshot))</span><br><span class="line">        <span class="keyword">return</span> screenshot</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_position</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        获取验证码位置</span></span><br><span class="line"><span class="string">        :return: 验证码位置元组</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        img = self.wait.until(</span><br><span class="line">            EC.presence_of_element_located((By.CLASS_NAME, <span class="string">'geetest_item_img'</span>))</span><br><span class="line">        )</span><br><span class="line">        time.sleep(<span class="number">2</span>)</span><br><span class="line">        location = img.location</span><br><span class="line">        size = img.size</span><br><span class="line">        top, bottom, left, right = location[<span class="string">'y'</span>], location[<span class="string">'y'</span>] + size[<span class="string">'height'</span>], location[<span class="string">'x'</span>], location[<span class="string">'x'</span>] + size[</span><br><span class="line">            <span class="string">'width'</span>]</span><br><span class="line">        <span class="keyword">return</span> (top, bottom, left, right)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_geetest_image</span><span class="params">(self, name=<span class="string">'captcha.png'</span>)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        获取验证码图片</span></span><br><span class="line"><span class="string">        :return: 图片对象</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        top, bottom, left, right = self.get_position()</span><br><span class="line">        print(<span class="string">"验证码位置："</span>, top, bottom, left, right)</span><br><span class="line">        screenshot = self.get_screenshot()</span><br><span class="line">        captcha = screenshot.crop((left, top, right, bottom))</span><br><span class="line">        captcha.save(name)</span><br><span class="line">        <span class="keyword">return</span> captcha</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">input_infos</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.driver.get(self.url)</span><br><span class="line">        self.driver.implicitly_wait(<span class="number">2</span>)</span><br><span class="line">        self.driver.find_element_by_xpath(</span><br><span class="line">            <span class="string">'//*[@id="base"]/div[2]/div/div/div[3]/div/form/div[1]/div/div[1]/div/input'</span>).send_keys(self.email)</span><br><span class="line">        self.driver.find_element_by_xpath(</span><br><span class="line">            <span class="string">'//*[@id="base"]/div[2]/div/div/div[3]/div/form/div[2]/div/div[1]/div/input'</span>).send_keys(self.passwd)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_slider</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        获取滑块对象</span></span><br><span class="line"><span class="string">        :return: 滑块对象</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        slider = self.wait.until(</span><br><span class="line">            EC.element_to_be_clickable((By.CLASS_NAME, <span class="string">'geetest_slider_button'</span>))</span><br><span class="line">        )</span><br><span class="line">        <span class="keyword">return</span> slider</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">is_pixel_equal</span><span class="params">(self, image1, image2, x, y)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        判断相同位置的像素是否相同</span></span><br><span class="line"><span class="string">        :param image1: 图片1</span></span><br><span class="line"><span class="string">        :param image2: 图片1</span></span><br><span class="line"><span class="string">        :param x: 位置x</span></span><br><span class="line"><span class="string">        :param y: 位置y</span></span><br><span class="line"><span class="string">        :return: boolean像素是否相同</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        pixel1 = image1.load()[x, y]</span><br><span class="line">        pixel2 = image2.load()[x, y]</span><br><span class="line">        threshold = <span class="number">60</span></span><br><span class="line">        <span class="keyword">if</span> abs(pixel1[<span class="number">0</span>] - pixel2[<span class="number">0</span>]) &lt; threshold <span class="keyword">and</span> abs(pixel1[<span class="number">1</span>] - pixel2[<span class="number">1</span>]) &lt; threshold <span class="keyword">and</span> abs(</span><br><span class="line">                pixel1[<span class="number">2</span>] - pixel2[<span class="number">2</span>]) &lt; threshold:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_gap</span><span class="params">(self, image1, image2)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        获取缺口偏移量</span></span><br><span class="line"><span class="string">        :param image1: 原始图片（无缺口）</span></span><br><span class="line"><span class="string">        :param image2: 带有缺口的图片</span></span><br><span class="line"><span class="string">        :return: 偏移量</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        left = <span class="number">60</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(left, image1.size[<span class="number">0</span>]):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(image1.size[<span class="number">1</span>]):</span><br><span class="line">                left = i</span><br><span class="line">                <span class="keyword">return</span> left</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> left</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_track</span><span class="params">(self, distance)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        根据偏移量获取移动轨迹</span></span><br><span class="line"><span class="string">        :param distance: 偏移量</span></span><br><span class="line"><span class="string">        :return: 移动轨迹</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        track = []</span><br><span class="line">        current = <span class="number">0</span></span><br><span class="line">        mid = distance * <span class="number">4</span> / <span class="number">5</span></span><br><span class="line">        t = <span class="number">0.2</span></span><br><span class="line">        v = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> current &lt; distance:</span><br><span class="line">            <span class="keyword">if</span> current &lt; mid:</span><br><span class="line">                a = <span class="number">2</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                a = <span class="number">-3</span></span><br><span class="line"></span><br><span class="line">            v0 = v</span><br><span class="line">            v = v0 + a * t</span><br><span class="line">            move = v0 * t + <span class="number">1</span> / <span class="number">2</span> * a * t * t</span><br><span class="line">            current += move</span><br><span class="line">            track.append(round(move))</span><br><span class="line">        <span class="keyword">return</span> track</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">move_to_gap</span><span class="params">(self, slider, tracks)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        拖动滑块到缺口处</span></span><br><span class="line"><span class="string">        :param slider:滑块对象</span></span><br><span class="line"><span class="string">        :param tracks:  轨迹</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="comment"># 行为链</span></span><br><span class="line">        ActionChains(self.driver).click_and_hold(slider).perform()</span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> tracks:</span><br><span class="line">            ActionChains(self.driver).move_by_offset(xoffset=x, yoffset=<span class="number">0</span>).perform()</span><br><span class="line">        time.sleep(<span class="number">0.5</span>)</span><br><span class="line">        ActionChains(self.driver).release().perform()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        登录geetest</span></span><br><span class="line"><span class="string">        :return:</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        submit = self.wait.until(</span><br><span class="line">            EC.element_to_be_clickable((By.CLASS_NAME, <span class="string">'geetest-btn'</span>))</span><br><span class="line">        )</span><br><span class="line">        submit.click()</span><br><span class="line">        time.sleep(<span class="number">10</span>)</span><br><span class="line">        print(<span class="string">"登录成功"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">crack</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.input_infos()</span><br><span class="line">        button = self.get_geetestBtn()</span><br><span class="line">        button.click()</span><br><span class="line">        image1 = self.get_geetest_image(<span class="string">'captcha1.png'</span>)</span><br><span class="line">        slider = self.get_slider()</span><br><span class="line">        slider.click()</span><br><span class="line">        image2 = self.get_geetest_image(<span class="string">'captcha2.png'</span>)</span><br><span class="line">        gap = self.get_gap(image1, image2)</span><br><span class="line">        print(<span class="string">'缺口位置：'</span>, gap)</span><br><span class="line">        gap -= BORDER</span><br><span class="line">        track = self.get_track(gap)</span><br><span class="line">        print(<span class="string">'滑动轨迹：'</span>, track)</span><br><span class="line">        self.move_to_gap(slider, track)</span><br><span class="line"></span><br><span class="line">        success = self.wait.ubtil(</span><br><span class="line">            EC.text_to_be_present_in_element((By.CLASS_NAME, <span class="string">'geetest_success_radar_tip_content'</span>), <span class="string">'验证成功'</span>)</span><br><span class="line">        )</span><br><span class="line">        print(success)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> success:</span><br><span class="line">            self.crack()</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.login()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    geetest = CrackGeetest()</span><br><span class="line">    <span class="comment"># geetest.input_infos()</span></span><br><span class="line">    geetest.crack()</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -1122,7 +940,7 @@ geetest.crack()
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#geetesst滑动验证码"><span class="nav-number">1.</span> <span class="nav-text">geetesst滑动验证码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#coding-utf-8"><span class="nav-number">2.</span> <span class="nav-text">--coding:utf-8--</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#极验拖动验证码识别"><span class="nav-number">3.</span> <span class="nav-text">极验拖动验证码识别</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#geetesst滑动验证码"><span class="nav-number">1.</span> <span class="nav-text">geetesst滑动验证码</span></a></li></ol></div>
             
 
           </div>
@@ -1170,7 +988,7 @@ geetest.crack()
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">| Bolg Total Words:1.9k</span>
+  <span class="post-count">| Bolg Total Words:1.8k</span>
 </div>
 
         
